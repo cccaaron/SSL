@@ -24,11 +24,13 @@ if %errorlevel% equ 0 (
     echo SUCCESS! 
     echo File created: certificate.pfx
     echo ---------------------------------------------------
+    timeout 5
+    rd/q /s openssl
+    del/q *.bat
 ) else (
     echo.
     echo ERROR: Failed to generate PFX. 
     echo Make sure 'private.key' exists in this folder and matches the CRT.
 )
 
-
-timeout 5
+pause
