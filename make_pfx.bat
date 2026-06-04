@@ -22,8 +22,7 @@ if %errorlevel% equ 0 (
     echo.
     echo ---------------------------------------------------
     echo SUCCESS! 
-    echo File created: certificate.pfx
-    echo File created: certificate_PBE-SHA1-3DES.pfx
+    echo Files created: certificate.pfx, certificate_PBE-SHA1-3DES.pfx
     echo ---------------------------------------------------
     timeout 5
     rd/q /s openssl
