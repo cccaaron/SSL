@@ -1,0 +1,10 @@
+GenerateCSR.bat
+make_pfx.bat
+openssl\CreateCRT.vbs
+openssl\GUI.vbs
+openssl\oldCSR.vbs
+openssl\bin\libcrypto-3-x64.dll
+openssl\bin\libssl-3-x64.dll
+openssl\bin\openssl.exe
+openssl\bin\zlib1.dll
+openssl\etc\ssl\openssl.cnf
