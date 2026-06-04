@@ -7,7 +7,7 @@ cscript //nologo openssl\CreateCRT.vbs
 
 if %errorlevel% neq 0 (
     echo Error: No certificate data provided.
-    pause
+    timeout 5
     exit /b
 )
 
@@ -16,6 +16,7 @@ set /p PFX_PWD=<pwd.txt
 echo [2] Generating PFX file...
 
 openssl pkcs12 -export -out certificate.pfx -inkey private.key -in certificate.crt -passout pass:%PFX_PWD%
+openssl pkcs12 -export -out certificate_PBE-SHA1-3DES.pfx -inkey private.key -in certificate.crt -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macalg sha1 -passout pass:%PFX_PWD%
 
 if %errorlevel% equ 0 (
     echo.
@@ -30,4 +31,4 @@ if %errorlevel% equ 0 (
 )
 
 
-pause
+timeout 5
