@@ -1,6 +1,7 @@
 @echo off
 title Install PFX to IIS (Auto mode)
-net session >nul 2>&1||(powershell start-process ""%0"" ""%*"" -Verb RunAs&exit)
+if "%~1" neq "" set arg="""%~1"""
+net session >nul 2>&1||(powershell start-process ""%0"" %arg% -Verb RunAs&exit)
 
 setlocal enabledelayedexpansion
 set PATH=%PATH%;%systemroot%\system32\inetsrv\
