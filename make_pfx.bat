@@ -1,5 +1,4 @@
 @echo off
-setlocal enabledelayedexpansion
 set PATH=%PATH%;%cd%\openssl\bin
 
 echo [1] Opening GUI to paste CRT content...
@@ -13,9 +12,11 @@ if %errorlevel% neq 0 (
 
 set /p PFX_PWD=<pwd.txt
 
-echo [2] Generating PFX file...
+echo [2] Generating PFX file... PW: %PFX_PWD%
 
 openssl pkcs12 -export -out certificate.pfx -inkey private.key -in certificate.crt -passout pass:%PFX_PWD%
+
+echo %PFX_PWD%>pwd2.txt
 openssl pkcs12 -export -out certificate_PBE-SHA1-3DES.pfx -inkey private.key -in certificate.crt -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macalg sha1 -passout pass:%PFX_PWD%
 
 if %errorlevel% equ 0 (
@@ -31,6 +32,7 @@ if %errorlevel% equ 0 (
     echo.
     echo ERROR: Failed to generate PFX. 
     echo Make sure 'private.key' exists in this folder and matches the CRT.
+    pause
 )
 
-pause
+
