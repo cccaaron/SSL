@@ -9,10 +9,12 @@ set PATH=%PATH%;%systemroot%\system32\inetsrv\
 set "pfxFile=%*"
 if not defined pfxFile set/p pfxFile=PFX: 
 set "pfxFile=%pfxFile:"=%"
+cls
+set pfxFile
 
 :trypwd
 set/p pfxPwd=Password: 
-certutil -p "%pfxPwd%" -dump "%pfxFile%">nul||(echo PFX: "%pfxFile%"
+certutil -p "%pfxPwd%" -dump "%pfxFile%">nul||(
 echo Wrong PFX Password "%pfxPwd%" try again.&goto trypwd)
 
 
@@ -37,6 +39,7 @@ appcmd set site /site.name:"%webSite%" /+bindings.[protocol='https',bindingInfor
 netsh http add sslcert ipport=0.0.0.0:443 certhash=%t% appid={4dc3e181-e14b-4a21-b022-59fc669b0914}
 
 endlocal
+timeout 20
 exit/b
 
 
