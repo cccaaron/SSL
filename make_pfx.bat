@@ -14,10 +14,12 @@ set /p PFX_PWD=<pwd.txt
 
 echo [2] Generating PFX file... PW: %PFX_PWD%
 
-openssl pkcs12 -export -out certificate.pfx -inkey private.key -in certificate.crt -passout pass:%PFX_PWD%
+for %%j in (%cd%) do set "fn=%%~nxj-%date:~-4%"
+
+openssl pkcs12 -export -out certificate.pfx -inkey private.key -in certificate.crt -passout pass:%PFX_PWD% -name "%fn%"
 
 echo %PFX_PWD%>pwd2.txt
-openssl pkcs12 -export -out certificate_PBE-SHA1-3DES.pfx -inkey private.key -in certificate.crt -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macalg sha1 -passout pass:%PFX_PWD%
+openssl pkcs12 -export -out certificate_PBE-SHA1-3DES.pfx -inkey private.key -in certificate.crt -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macalg sha1 -passout pass:%PFX_PWD% -name "%fn%"
 
 if %errorlevel% equ 0 (
     echo.
