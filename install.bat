@@ -17,15 +17,11 @@ set/p pfxPwd=Password:
 certutil -p "%pfxPwd%" -dump "%pfxFile%">nul||(
 echo Wrong PFX Password "%pfxPwd%" try again.&goto trypwd)
 
-
-for /f "tokens=2 delims=:" %%i in ('certutil -p "%pfxPwd%" -dump "%pfxFile%" ^| findstr "Subject:"') do set "str=%%i"
-call:getvar "!str:, =" "!"
+for /f "tokens=1,2 delims=:" %%i in ('certutil -p "%pfxPwd%" -dump "%pfxFile%"^|findstr /c:"Subject" /c:"Cert Hash"') do (set "str=%%j"
+if "%%i"=="Subject" (call:getvar "!str:, =" "!") else set "t=!str: =!")
 set "domain=%CN: =%"
 
 certutil -f -p "%pfxPwd%" -importpfx "%pfxFile%" NoRoot
-
-call:CertHash My||call:CertHash WebHosting
-
 
 set n=0
 for /f tokens^=2^ delims^=^" %%i in ('appcmd list site') do set/a n+=1&set "s!n!=%%i"
@@ -43,15 +39,6 @@ appcmd set site /site.name:"%webSite%" /+bindings.[protocol='https',bindingInfor
 endlocal
 timeout 20
 exit/b
-
-
-:CertHash
-set flag=0
-for /f "tokens=1,2 delims=:" %%i in ('certutil -store %1') do (
-if !flag!==0 (set "d=%%j"&if "!d:%domain%=!" neq "!d!" set flag=1
-) else (set "c=%%i"&if "!c:Cert Hash=!" neq "!c!" (
-set "t=%%j"&set "t=!t: =!"&goto :eof)))
-exit/b 1
 
 :getvar
 if "%~1"=="" exit/b
