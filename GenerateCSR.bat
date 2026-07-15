@@ -43,7 +43,7 @@ for /f "tokens=1,2 delims=:" %%s in ('findstr Subject: deCSR.txt') do set "%%s=%
 for /f "tokens=2 delims=(" %%s in ('findstr Public-Key: deCSR.txt') do set/a k=%%s 2>nul
 for /f "tokens=*" %%s in ('findstr DNS: deCSR.txt') do set "s=%%s"
 del/q deCSR.txt old_CSR.txt
-set "s=%s:DNS:=%"
+if defined s set "s=%s:DNS:=%"
 call:cut "%Subject:, =" "%"
 set "sub="%C%" "%ST%" "%L%" "%O%" "%OU%" "%CN%""
 call:cutSAN "%s:, =" "%"
