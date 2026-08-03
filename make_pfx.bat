@@ -15,7 +15,7 @@ set /p PFX_PWD=<pwd.txt
 echo [2] Generating PFX file... PW: %PFX_PWD%
 
 for %%j in (%cd%) do set "j=%%~nxj"
-set "fn=%j:.=_%-%date:~-4%"
+set "fn=%j:.=_%-%date:~4,2%-%date:~-2%"
 
 openssl pkcs12 -export -out certificate.pfx -inkey private.key -in certificate.crt -passout pass:%PFX_PWD% -name "%fn%"
 
