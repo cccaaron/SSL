@@ -10,17 +10,17 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
-set /p PFX_PWD=<pwd.txt
+echo [2] Generating PFX file... 
 
-echo [2] Generating PFX file... PW: %PFX_PWD%
+set/p x=<openssl\CN
+set "%x: =%"
+if "%cn:~,1%"=="*" set cn=star%cn:~1%
+set "fn=%cn:.=_%-%date:~4,2%-%date:~-2%"
 
-for %%j in (%cd%) do set "j=%%~nxj"
-set "fn=%j:.=_%-%date:~4,2%-%date:~-2%"
-
-openssl pkcs12 -export -out certificate.pfx -inkey private.key -in certificate.crt -passout pass:%PFX_PWD% -name "%fn%"
-
-echo %PFX_PWD%>pwd2.txt
-openssl pkcs12 -export -out certificate_PBE-SHA1-3DES.pfx -inkey private.key -in certificate.crt -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macalg sha1 -passout pass:%PFX_PWD% -name "%fn%"
+for /f %%p in (pwd.txt) do (
+openssl pkcs12 -export -out certificate.pfx -inkey private.key -in certificate.crt -passout pass:%%p -name "%fn%"
+openssl pkcs12 -export -out certificate_PBE-SHA1-3DES.pfx -inkey private.key -in certificate.crt -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macalg sha1 -passout pass:%%p -name "%fn%"
+)
 
 if %errorlevel% equ 0 (
     echo.
