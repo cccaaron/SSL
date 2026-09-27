@@ -46,8 +46,9 @@ del/q deCSR.txt old_CSR.txt
 if defined s set "s=%s:DNS:=%"
 call:cut "%Subject:, =" "%"
 set "sub="%C%" "%ST%" "%L%" "%O%" "%OU%" "%CN%""
-call:cutSAN "%s:, =" "%"
-endlocal&set "%~1=%sub% "%k%" %san:" "=, %"
+if defined s call:cutSAN "%s:, =" "%"
+if defined san set "san=%san:" "=, %"
+endlocal&set "%~1=%sub% "%k%" %san%"
 exit/b
 
 :cut
