@@ -18,6 +18,7 @@ if not exist "temp_openssl.conf" (
 
 echo [2] Generating CSR with %SELECTED_BITS% bits...
 openssl req -new -out CSR.txt -newkey rsa:%SELECTED_BITS% -nodes -keyout private.key -config temp_openssl.conf
+findstr/b CN temp_openssl.conf>openssl\CN
 del/q temp_openssl.conf
 
 echo.
