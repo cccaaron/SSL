@@ -1,8 +1,14 @@
 @echo off
 set PATH=%PATH%;%cd%\openssl\bin
 
+echo [1] Opening GUI to paste CRT content...
+cscript //nologo openssl\CreateCRT.vbs
 
-
+if %errorlevel% neq 0 (
+    echo Error: No certificate data provided.
+    timeout 5
+    exit /b
+)
 
 echo [2] Generating PFX file... 
 
