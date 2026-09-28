@@ -8,3 +8,5 @@ openssl\bin\libssl-3-x64.dll
 openssl\bin\openssl.exe
 openssl\bin\zlib1.dll
 openssl\etc\ssl\openssl.cnf
+openssl\ems.ps1
+openssl\mail.msg
