@@ -18,7 +18,7 @@ objIE.Document.Body.InnerHTML = _
     "<textarea id='crtData' style='width:100%;height:300px;font-family:monospace;' " & _
     "placeholder='-----BEGIN CERTIFICATE----- ...'></textarea><br><br>" & _
     "Enter a password for the PFX file:<br>" & _
-    "<input type='password' id='pwd' style='width:100%'><br><br>" & _
+    "<input type='text' id='pwd' style='width:100%'><br><br>" & _
     "<button id='btn' style='width:100%;height:30px;background-color:#008CBA;color:white;border:none;'>Generate PFX</button>" & _
     "<input type='hidden' id='clicked' value='0'></div>"
 
