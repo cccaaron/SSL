@@ -19,7 +19,7 @@ set "fn=%cn:.=_%-%date:~4,2%-%date:~-2%"
 
 for /f %%p in (pwd.txt) do (
 openssl pkcs12 -export -out certificate.pfx -inkey private.key -in certificate.crt -passout pass:%%p -name "%fn%"||goto ERR
-openssl pkcs12 -export -out certificate_PBE-SHA1-3DES.pfx -inkey private.key -in certificate.crt -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macalg sha1 -passout pass:%%p -name "%fn%"||goto ERR
+openssl pkcs12 -export -out certificate_PBE-SHA1-3DES.pfx -inkey private.key -in certificate.crt -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macalg sha1 -passout pass:%%p -name "%fn%"
 )
 
 echo.
