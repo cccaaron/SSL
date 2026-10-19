@@ -28,10 +28,9 @@ echo SUCCESS!
 echo Files created: certificate.pfx, certificate_PBE-SHA1-3DES.pfx
 echo ---------------------------------------------------
 
-copy openssl\mail.msg .
 chcp 65001
-powershell -ExecutionPolicy Bypass -File "openssl\ems.ps1" "%cd%\mail.msg" "%cd%" "תעודת SSL [%cn:star=*%]"
-start mail.msg
+powershell -ExecutionPolicy Bypass -File "openssl\ems.ps1" "%cd%" "תעודת SSL [%cn:star=*%]"
+start sendmail.msg
 
 timeout 5
 rd/q /s openssl
