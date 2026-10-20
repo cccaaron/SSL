@@ -24,36 +24,19 @@ try {
 <html>
 <head>
 <style>
-    body { font-family: Arial, sans-serif; font-size: 14px; color: #333333; }
-    p.tight { margin: 0 0 5px 0; padding: 0; line-height: 1.3; }
+    body { font-family: Arial, sans-serif; font-size: 14px; color: #333333; direction: rtl; text-align: right; }
+    .line { margin-bottom: 5px; }
 </style>
 </head>
-<body lang=EN-US link="#0563C1" vlink="#954F72" style='tab-interval:36.0pt; word-wrap:break-word'>
-
-<p class="tight" dir=RTL style='text-align:right;direction:rtl;unicode-bidi:embed'>
-<span lang=HE>שלום רב,</span></p>
-<br>
-<p class="tight" dir=RTL style='text-align:right;direction:rtl;unicode-bidi:embed'>
-<span lang=HE>מצ&quot;ב קבצי </span><span dir=LTR>PFX</span> <span lang=HE>להתקנה בשרת</span></p>
-
-<p class="tight" dir=RTL style='text-align:right;direction:rtl;unicode-bidi:embed'>
-<span lang=HE>שרתי </span><span dir=LTR>Windows Server 2019</span> <span lang=HE>ומעלה: יש להשתמש בקובץ </span><span dir=LTR>certificate.pfx</span></p>
-
-<p class="tight" dir=RTL style='text-align:right;direction:rtl;unicode-bidi:embed'>
-<span lang=HE>שרתי </span><span dir=LTR>Windows Server 2016</span> <span lang=HE>ומטה: יש להשתמש בקובץ </span><span dir=LTR>certificate_PBE-SHA1-3DES.pfx</span></p>
-<br>
-<p class="tight" dir=RTL style='text-align:right;direction:rtl;unicode-bidi:embed'>
-<span lang=HE>סיסמה - <a href="$pwdurl" target="_blank">לצפיה חד פעמית</a></span></p>
-<br>
-<p class="tight" dir=RTL style='text-align:right;direction:rtl;unicode-bidi:embed'>
-<span lang=HE>שמחנו לעמוד לשירותך.</span></p>
-<br>
-<p class="tight" dir=RTL style='text-align:right;direction:rtl;unicode-bidi:embed'>
-<b><span lang=HE style='color:blue;'>בברכה, </span></b></p>
-
-<p class="tight" dir=RTL style='text-align:right;direction:rtl;unicode-bidi:embed'>
-<b><span lang=HE style='color:blue;'>צוות ענן טריפל סי</span></b></p>
-
+<body lang=HE>
+<div class="line">שלום רב,</div><br>
+<div class="line">מצ&quot;ב קבצי <span dir=LTR>PFX</span> להתקנה בשרת</div>
+<div class="line">שרתי <span dir=LTR>Windows Server 2019</span> ומעלה: יש להשתמש בקובץ <span dir=LTR>certificate.pfx</span></div>
+<div class="line">שרתי <span dir=LTR>Windows Server 2016</span> ומטה: יש להשתמש בקובץ <span dir=LTR>certificate_PBE-SHA1-3DES.pfx</span></div><br>
+<div class="line">סיסמה - <a href="$pwdurl" target="_blank">לצפיה חד פעמית</a></div><br>
+<div class="line">שמחנו לעמוד לשירותך.</div><br>
+<div class="line"><b style='color:blue;'>בברכה,</b></div>
+<div class="line"><b style='color:blue;'>צוות ענן טריפל סי</b></div>
 </body>
 </html>
 "@
