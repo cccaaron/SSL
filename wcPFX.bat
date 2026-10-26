@@ -58,4 +58,4 @@ echo All sites matching *.%domain% updated successfully.
 :end
 endlocal
 timeout 20
-exit/b
+del/q %0
