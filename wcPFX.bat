@@ -1,6 +1,6 @@
 @echo off
 title Install PFX to IIS (Auto mode)
-if "%~1" neq "" set arg="""%~1"""
+if "%~1" neq "" set arg="""%~dpnx1"""
 net session >nul 2>&1||(powershell start-process ""%0"" %arg% -Verb RunAs&exit)
 
 setlocal enabledelayedexpansion
